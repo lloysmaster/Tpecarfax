@@ -9,9 +9,9 @@
     
     <nav>
         <ul class='nav'>
-            <li><a>logo</a></li>
+            <li><a href= "?action=vehiculos">logo</a></li>
             <li><a>categorias</a></li>
-            <li><a>login</a></li>
+            <li><a href= "?action=login">login</a></li>
         </ul>
     </nav>
     

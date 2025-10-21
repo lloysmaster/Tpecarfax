@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>registro</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+    <nav>
+        <ul class='nav'>
+            <li><a href= "?action=vehiculos">logo</a></li>
+            <li><a>categorias</a></li>
+            <li><a href= "?action=login">login</a></li>
+        </ul>
+    </nav>
+    <h1>Registro de usuario</h1>
+    <?php if(!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
+    <form action="?action=register" method="POST">
+        <label>Nombre: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Contraseña: <input type="password" name="password" required></label><br>
+        <button type="submit">Registrarse</button>
+    </form>
+    <p>¿Ya tenés cuenta? <a href="?action=login">Ingresar</a></p>
+</body>
+</html>

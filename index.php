@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
 require_once './app/controllers/vehicle.controller.php';
 require_once './app/controllers/category.controller.php';
+require_once './app/controllers/auth.controller.php';
 
 $action = $_GET['action'] ?? 'vehiculos';
 $params = explode('/', $action);
@@ -30,6 +31,21 @@ switch ($controllerName) {
         $controller = new categoryController();
         $controller->add();
         break;
+        
+    case 'login':
+    $controller = new AuthController();
+    $controller->login();
+    break;
+
+    case 'register':
+    $controller = new AuthController();
+    $controller->register();
+    break;
+
+    case 'logout':
+    $controller = new AuthController();
+    $controller->logout();
+    break;
 
     default:
         echo "404 - Página no encontrada";
