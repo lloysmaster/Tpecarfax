@@ -13,7 +13,12 @@ $controllerName = array_shift($params);
 switch ($controllerName) {
     case 'vehiculos':
         $controller = new vehicleController();
-        $controller->index($params);
+
+        if (isset($params[0]) && $params[0] === 'category' && isset($params[1])) {
+        $controller->index($params[1]); // llamamos al método category con el id
+        } else {
+        $controller->index();
+        }
         break;
 
     case 'categorias':

@@ -25,23 +25,23 @@ class Vehicle {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 }
-    public function getVehicleForCategory(){
+    public function getVehicleForCategory($categoryId){
+    $query = "SELECT " . $this->table_name . ".*,
+                " . $this->table_nameUser . ".name,
+                " . $this->table_nameCategory . ".name AS " . $this->table_nameCategory . "_name
+              FROM " . $this->table_name . "
+              JOIN " . $this->table_nameUser . " 
+                  ON " . $this->table_name . ".id_user = " . $this->table_nameUser . ".id
+              JOIN " . $this->table_nameCategory . " 
+                  ON " . $this->table_name . ".id_category = " . $this->table_nameCategory . ".id
+              WHERE " . $this->table_name . ".id_category = :categoryId";
 
-     $query = "SELECT " . $this->table_name . ".*,
-        " . $this->table_nameUser . ".name,
-        " . $this->table_nameCategory . ".name AS " . $this->table_nameCategory . "_name
-        FROM " . $this->table_name . "
-        JOIN " . $this->table_nameUser . " 
-            ON " . $this->table_name . ".id_user = " . $this->table_nameUser . ".id
-        JOIN " . $this->table_nameCategory . " 
-            ON " . $this->table_name . ".id_category = " . $this->table_nameCategory . ".id
-        WHERE " . $this->table_name . ".id_category = :categoryId";
     $stmt = $this->conn->prepare($query);
     $stmt->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
 }
+
 }
 ?>
 

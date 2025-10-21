@@ -18,7 +18,7 @@
     <section class= 'sub-bar'>
         
     <?php foreach ($categories as $s): ?>
-            <h3 class="lista"><a href="vehicles/category/<?= $s['id'] ?>"><?= $s['name'] ?></a></h3>
+            <h3 class="lista"><a href="?action=vehiculos/category/<?= $s['id'] ?>"><?= $s['name'] ?></a></h3>
         <?php endforeach; ?>
 
 
