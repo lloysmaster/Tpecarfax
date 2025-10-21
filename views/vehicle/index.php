@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+    
+    <nav>
+        <ul class='nav'>
+            <li><a>logo</a></li>
+            <li><a>categorias</a></li>
+            <li><a>login</a></li>
+        </ul>
+    </nav>
+    
+    <section class= 'sub-bar'>
+        
+    <?php foreach ($categories as $s): ?>
+            <h3 class="lista"><a href="vehicles/category/<?= $s['id'] ?>"><?= $s['name'] ?></a></h3>
+        <?php endforeach; ?>
+
+
+    </section>
+
+    <ul>
+        <li class='lista referencia-lista'> <a class='referencia-lista'>titulo</a><a class='referencia-lista'>categoria</a><a class='referencia-lista'>descripcion</a><a class='referencia-lista'>anunciante</a></li>
+        <?php foreach ($vehicles as $u): ?>
+            <li class='lista'>
+                <h2 class="titulo"><?php echo $u['title']?></h2>
+                <h3 class="titulo"><?php echo $u['category_name']?></h3>
+                <p class="descripcion"><?php echo $u['description']?></p>
+                <span class="anunciante"><?php echo $u['name']?></span>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</body>
+</html>

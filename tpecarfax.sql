@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2025 a las 00:20:39
+-- Tiempo de generación: 21-10-2025 a las 20:51:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,8 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tpecarfax`
+-- Base de datos: `testbasecarfax`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`) VALUES
+(1, 'moto', 'vehiculo de dos ruedas'),
+(2, 'auto', 'vehiculo cerrado cuatro ruedas con caja cerrada'),
+(3, 'camioneta', 'vehiculo de cuatro ruedas con caja');
 
 -- --------------------------------------------------------
 
@@ -29,20 +50,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `pais` varchar(100) NOT NULL,
-  `ciudad` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `nombre`, `edad`, `pais`, `ciudad`) VALUES
-(1, 'robin', 18, 'argentina', 'buenos aires'),
-(2, 'batman', 21, 'estados unidos', 'gotica'),
-(3, 'joker', 65, 'estados unidos', 'gotica');
+INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
+(1, 'eltutangamon', 'eltutangamon@pijacorta.com', '1111111'),
+(2, 'elmaspitudo', 'elmaspitudo@quizalocontrario.com', '11111111111'),
+(3, 'tremendisimoputo', 'tremendisimoputo@nohetero.com', '1111111111111');
 
 -- --------------------------------------------------------
 
@@ -51,43 +71,60 @@ INSERT INTO `users` (`id`, `nombre`, `edad`, `pais`, `ciudad`) VALUES
 --
 
 CREATE TABLE `vehicles` (
-  `vehicle_id` int(11) NOT NULL,
-  `owner_id` int(11) NOT NULL,
-  `mileage` int(11) NOT NULL,
-  `brand` varchar(50) NOT NULL,
-  `model` varchar(40) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_vehicle` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `brand` varchar(100) DEFAULT NULL,
+  `model` varchar(100) DEFAULT NULL,
+  `year` year(4) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `id_category` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `vehicles`
 --
 
-INSERT INTO `vehicles` (`vehicle_id`, `owner_id`, `mileage`, `brand`, `model`, `description`) VALUES
-(2, 1, 100000, 'ford', 'falcon', 'falcon al piso, sin motor, sin ruedas, sin asientos, solo para entendidos en el tema.'),
-(3, 3, 1000000, 'renault', '12', 'renault 12, todo lo que se le puede pedir a un auto, como nuevo, solo detalles'),
-(4, 2, 2000000, 'bati', 'movil', 'esta algo sucio, le quedaran algunas horas de uso, lo vendo porque chupa mucho');
+INSERT INTO `vehicles` (`id_vehicle`, `title`, `description`, `brand`, `model`, `year`, `price`, `id_category`, `id_user`) VALUES
+(2, 'vendo o permuto', 'esta en relativamente buen estado', 'ford', 't', '1945', 1000000.00, 2, 1),
+(3, 'pelotudo el que lo lee', 'es un buen auto', 'renault', '12', '1999', 99999999.99, 2, 2),
+(4, 'vendo urgente', 'nesesito plata', 'ferrari', 'la ferrari', '1997', 10000000.00, 2, 3);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `vehicles`
 --
 ALTER TABLE `vehicles`
-  ADD PRIMARY KEY (`vehicle_id`),
-  ADD KEY `owner_id` (`owner_id`);
+  ADD PRIMARY KEY (`id_vehicle`),
+  ADD KEY `id_category` (`id_category`,`id_user`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -99,7 +136,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_vehicle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -109,7 +146,8 @@ ALTER TABLE `vehicles`
 -- Filtros para la tabla `vehicles`
 --
 ALTER TABLE `vehicles`
-  ADD CONSTRAINT `vehicles_ibfk_1` FOREIGN KEY (`owner_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `vehicles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `vehicles_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
