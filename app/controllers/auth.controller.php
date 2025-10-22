@@ -19,7 +19,7 @@ class AuthController {
                 $error = "Email o contraseña incorrecta";
             }
         }
-        include __DIR__ . '/../../views/auth/login.php';
+        include __DIR__ . '/../../views/auth/login.phtml';
     }
     public function register() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,7 +37,7 @@ class AuthController {
         }
     }
 
-    include __DIR__ . '/../../views/auth/register.php';
+    include __DIR__ . '/../../views/auth/register.phtml';
 }
     public function logout() {
         session_start();

@@ -28,15 +28,20 @@ ul{
     border-radius: var(--border-radius);
 }
 .lista{
-    border: 2px solid #000000;
+    border: 2px solid #000;
     display: flex;
+    justify-content: center; /* centra horizontalmente los elementos */
+    align-items: center;     /* centra verticalmente los elementos dentro del li */
+    gap: 20px;               /* espacio entre elementos */
     background-color: var(--color-acento);
-    justify-content: space-around;
+    padding: var(--padding-lista);
 }
 .referencia-lista{
-    list-style: none; 
-    border: 2px solid #000000;
-    background-color: var(--color-acento);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-weight: bold;
 }
 .sub-bar{
     display: flex;           /* Hace que los <li> se pongan en fila */
@@ -45,4 +50,8 @@ ul{
     padding: 0;
     margin: 0;
     background-color: var(--color-acento);
+}
+.lista a, .lista h2, .lista h3, .lista p, .lista span {
+    flex: 1;       /* todas las columnas toman el mismo ancho */
+    text-align: center; /* centra el texto */
 }

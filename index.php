@@ -27,11 +27,22 @@ switch ($controllerName) {
         $controller->index();
         break;
 
-    case 'categorias/agregar':
-        $controller = new categoryController();
+    case 'editar/agregar':
+        $controller = new vehicleController();
         $controller->add();
         break;
-        
+    case 'editar/editar':
+        $controller = new vehicleController();
+        $controller->edit();
+        break;
+    case 'editar/eliminar':
+        $controller = new vehicleController();
+        $controller->delete();
+        break;
+    case 'editar':
+        $controller = new vehicleController();
+        $controller->modifycationMenu();
+        break;
     case 'login':
     $controller = new AuthController();
     $controller->login();
