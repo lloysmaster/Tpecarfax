@@ -1,7 +1,11 @@
 <nav>
         <ul class='nav'>
             <li><a href= "?action=vehiculos">logo</a></li>
-            <li><a href= "?action=editar">publicar</a></li>
+            <?php if (isset($_SESSION['user'])): ?>
+            <div class="gestion">
+            <a href="?action=panel" class="btn-gestion">Panel de gestión</a>
+             </div>
+            <?php endif; ?>
             <li><a href= "?action=login">login</a></li>
         </ul>
 </nav>

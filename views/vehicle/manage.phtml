@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Vehículos</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+    <?php
+    require_once __DIR__ . '/../nav_bar.phtml';
+    ?>
+    <h1>Panel de gestión de vehículos</h1>
+
+    <nav>
+        <ul>
+            <!-- Cualquier usuario logueado puede agregar -->
+            <li><a href="?action=vehiculos/create">Agregar nuevo vehículo</a></li>
+
+            <!-- Solo admins -->
+            <?php if ($isAdmin): ?>
+                <li><a href="?action=vehiculos/editList">Editar vehículos</a></li>
+                <li><a href="?action=vehiculos/deleteList">Eliminar vehículos</a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</body>
+</html>

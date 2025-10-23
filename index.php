@@ -27,22 +27,37 @@ switch ($controllerName) {
         $controller->index();
         break;
 
-    case 'editar/agregar':
-        $controller = new vehicleController();
-        $controller->add();
+
+    case 'panel':
+        $controller = new categoryController();
+        $subAction = $params[0] ?? null;
+
+        switch ($subAction) {
+            case 'create':
+                $controller->create();
+                break;
+            case 'edit':
+                $id = $params[1] ?? null;
+                if ($id) $controller->edit($id);
+                else echo "Falta el ID del vehículo para editar.";
+                break;
+            case 'delete':
+                $id = $params[1] ?? null;
+                if ($id) $controller->delete($id);
+                else echo "Falta el ID del vehículo para eliminar.";
+                break;
+            case 'manage':
+                $controller->modifycationMenu();
+                break;
+            default:
+                // si no hay subacción, muestra listado o filtrado por categoría
+                if (isset($params[0]) && $params[0] === 'category' && isset($params[1])) {
+                    $controller->index($params[1]);
+                } else {
+                    $controller->index();
+                }
         break;
-    case 'editar/editar':
-        $controller = new vehicleController();
-        $controller->edit();
-        break;
-    case 'editar/eliminar':
-        $controller = new vehicleController();
-        $controller->delete();
-        break;
-    case 'editar':
-        $controller = new vehicleController();
-        $controller->modifycationMenu();
-        break;
+            }
     case 'login':
     $controller = new AuthController();
     $controller->login();
