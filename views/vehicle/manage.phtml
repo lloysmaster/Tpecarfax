@@ -17,7 +17,7 @@
             <li><a href="?action=vehiculos/create">Agregar nuevo vehículo</a></li>
 
             <!-- Solo admins -->
-            <?php if ($isAdmin): ?>
+            <?php if (isAdmin()): ?>
                 <li><a href="?action=vehiculos/editList">Editar vehículos</a></li>
                 <li><a href="?action=vehiculos/deleteList">Eliminar vehículos</a></li>
             <?php endif; ?>

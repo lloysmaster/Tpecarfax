@@ -23,17 +23,17 @@ class User {
         return false; // login fallido
     }
 
-    public function register($name, $email, $password, $isAdmin = 0) {
+    public function register($name, $email, $password, $role = 'user') {
     // Encriptamos la contraseña
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO users (name, email, password, is_admin) 
-              VALUES (:name, :email, :password, :is_admin)";
+    $query = "INSERT INTO users (name, email, password, role) 
+              VALUES (:name, :email, :password, :role)";
     $stmt = $this->conn->prepare($query);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $hash);
-    $stmt->bindParam(':is_admin', $isAdmin, PDO::PARAM_INT);
+    $stmt->bindParam(':role', $role, PDO::PARAM_STR);
 
     return $stmt->execute();
 }

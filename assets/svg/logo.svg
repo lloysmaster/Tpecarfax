@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="svg2" xmlns="http://www.w3.org/2000/svg" viewBox="80.467 220.637 339.066 207.96">
+  <desc>Source: openclipart.org/detail/209545</desc>
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="120.323" y1="226.952" x2="120.323" y2="258.055" id="gradient-0" spreadMethod="pad">
+      <stop offset="0" style="stop-color: rgb(0% 27.843% 40%)"/>
+      <stop offset="1" style="stop-color: rgb(0% 18.127% 29.017%)"/>
+    </linearGradient>
+  </defs>
+  <text style="fill: url(&quot;#gradient-0&quot;); font-family: Arial, sans-serif; font-size: 28px; paint-order: fill; white-space: pre;" transform="matrix(8.615384, 0, 0, 8.782609, -786.37677, -1794.061035)" x="101.645" y="251.966">CF</text>
+</svg>

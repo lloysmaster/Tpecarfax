@@ -1,11 +1,51 @@
 <nav>
-        <ul class='nav'>
-            <li><a href= "?action=vehiculos">logo</a></li>
-            <?php if (isset($_SESSION['user'])): ?>
-            <div class="gestion">
-            <a href="?action=panel" class="btn-gestion">Panel de gestión</a>
-             </div>
-            <?php endif; ?>
-            <li><a href= "?action=login">login</a></li>
-        </ul>
+    <ul class='nav'>
+                <li>
+                  <a href="?action=vehiculos" class="logo">
+                    <img src="assets/svg/logo.svg" alt="TPECarfax Logo" width="32" height="32">
+                  </a>
+                </li>
+
+        <?php if (!isLoggedIn()): ?>
+            <!-- caso: usuario NO logueado -->
+            <li>
+              <a href="?action=login" class="nav-icon" title="Login">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M9 8V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-2"/>
+                    <path d="M3 12h13l-3-3m0 6l3-3"/>
+                  </g>
+                </svg>
+              </a>
+            </li>
+
+        <?php elseif (isAdmin()): ?>
+            <!-- caso: usuario ADMIN -->
+            <li><a href="?action=panel" class="btn-gestion">PANEL DE GESTIÓN</a></li>
+            <li>
+              <a href="?action=logout" class="nav-icon" title="Logout">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M15 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/>
+                    <path d="M21 12H8l3-3m0 6l-3-3"/>
+                  </g>
+                </svg>
+              </a>
+            </li>
+
+        <?php else: ?>
+            <!-- caso: usuario logueado normal -->
+            <li><a href="?action=panel">MIS PUBLICACIÓNES</a></li>
+            <li>
+              <a href="?action=logout" class="nav-icon" title="Logout">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M15 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/>
+                    <path d="M21 12H8l3-3m0 6l-3-3"/>
+                  </g>
+                </svg>
+              </a>
+            </li>
+        <?php endif; ?>
+    </ul>
 </nav>

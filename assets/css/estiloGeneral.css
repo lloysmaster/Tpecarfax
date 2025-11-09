@@ -16,12 +16,20 @@ body {
 
 .nav {
     display: flex;           /* Hace que los <li> se pongan en fila */
-    justify-content: space-around; /* Distribuye los elementos con espacio igual */
+    justify-content: space-between; /* Distribuye los elementos con espacio igual */
     list-style: none;
-    padding: 0;
+    padding: 0 1rem;
     margin: 0;
     background-color: var(--color-acento);
     
+}
+.nav a{
+    display: flex;             /* permite centrar el contenido */
+    align-items: center;       /* centra verticalmente */
+    justify-content: center;   /* centra horizontalmente */
+    height: 100%;              /* ocupa todo el alto del li */
+    color: inherit;
+    text-decoration: none;
 }
 ul{
     padding: var(--padding-lista);
@@ -54,4 +62,12 @@ ul{
 .lista a, .lista h2, .lista h3, .lista p, .lista span {
     flex: 1;       /* todas las columnas toman el mismo ancho */
     text-align: center; /* centra el texto */
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
 }

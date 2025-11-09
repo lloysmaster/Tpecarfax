@@ -47,17 +47,15 @@ switch ($controllerName) {
                 else echo "Falta el ID del vehículo para eliminar.";
                 break;
             case 'manage':
-                $controller->modifycationMenu();
+                $controller->manage();
                 break;
             default:
-                // si no hay subacción, muestra listado o filtrado por categoría
-                if (isset($params[0]) && $params[0] === 'category' && isset($params[1])) {
-                    $controller->index($params[1]);
-                } else {
-                    $controller->index();
-                }
-        break;
+                 $controller->manage();
+                break;
+                
+            break;
             }
+            break;
     case 'login':
     $controller = new AuthController();
     $controller->login();
