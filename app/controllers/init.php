@@ -16,10 +16,14 @@ function requireLogin() {
     }
 }
 
-function requireAdmin() {
-    if (!isAdmin()) {
-        header("Location: ?action=vehiculos"); // o página de error
-        exit;
+function requireAdmin($redirect = true) {
+        if (!isLoggedIn() || !isAdmin()) {
+        if ($redirect) {
+            header("Location: ?action=vehiculos");
+            exit;
+        }
+        return false;
     }
+    return true;
 }
 ?>

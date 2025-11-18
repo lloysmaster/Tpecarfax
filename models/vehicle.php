@@ -1,3 +1,5 @@
+
+
 <?php
 require_once __DIR__ . '/../config/database.php';
 
@@ -12,7 +14,7 @@ class Vehicle {
         $this->conn = $database->getConnection();
     }
 
-    public function obtenerVehicle() {
+    public function getVehicle() {
 
     $query = "SELECT " . $this->table_name . ".*,
     " . $this->table_nameUser. ".name,

@@ -29,33 +29,41 @@ switch ($controllerName) {
 
 
     case 'panel':
-        $controller = new categoryController();
-        $subAction = $params[0] ?? null;
+    $section = $params[0] ?? 'vehiculos'; // o 'categorias'
+    $subAction = $params[1] ?? 'manage';
+    $id = $params[2] ?? null;
 
-        switch ($subAction) {
-            case 'create':
-                $controller->create();
-                break;
-            case 'edit':
-                $id = $params[1] ?? null;
-                if ($id) $controller->edit($id);
-                else echo "Falta el ID del vehículo para editar.";
-                break;
-            case 'delete':
-                $id = $params[1] ?? null;
-                if ($id) $controller->delete($id);
-                else echo "Falta el ID del vehículo para eliminar.";
-                break;
-            case 'manage':
-                $controller->manage();
-                break;
-            default:
-                 $controller->manage();
-                break;
-                
+    switch ($section) {
+        case 'categorias':
+            $controller = new CategoryController();
             break;
-            }
+        case 'vehiculos':
+            $controller = new VehicleController();
             break;
+        default:
+            echo "Sección no válida del panel.";
+            exit;
+        }
+
+    switch ($subAction) {
+        case 'create':
+            $controller->create();
+            break;
+        case 'edit':
+            if ($id) $controller->edit($id);
+            else echo "Falta el ID para editar.";
+            break;
+        case 'delete':
+            if ($id) $controller->delete($id);
+            else echo "Falta el ID para eliminar.";
+            break;
+        case 'manage':
+        default:
+            $controller->manage();
+            break;
+        }
+    break;
+            
     case 'login':
     $controller = new AuthController();
     $controller->login();

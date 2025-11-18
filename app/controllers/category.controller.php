@@ -10,10 +10,13 @@ class CategoryController {
     }
 
     public function manage() {
-        requireAdmin();
+       if (isAdmin()) {
         $category = new Category();
         $categories = $category->getAllCategory();
-        include __DIR__ . '/../../views/vehicle/manage.phtml';
+        include __DIR__ . '/../../views/vehicle/admin/manage.phtml';
+    } else {
+        include __DIR__ . '/../../views/vehicle/user/manage.phtml';
+    }
     }
     public function create() {
 

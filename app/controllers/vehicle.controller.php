@@ -12,13 +12,24 @@ class VehicleController {
         if ($category_id !== null) {
             $vehicles = $vehicle->getVehicleForCategory($category_id);
         } else {
-            $vehicles = $vehicle->obtenerVehicle();
+            $vehicles = $vehicle->getVehicle();
         }
 
         include __DIR__ . '/../../views/vehicle/index.phtml';
     }
 
-    
+    public function manage(){
+         requireLogin();
+
+    if (isAdmin()) {
+        
+        include __DIR__ . '/../../views/panel/admin/manage.phtml';
+
+    } else {
+        
+        include __DIR__ . '/../../views/panel/user/manage.phtml';
+    }
+    }
     
     
 }
