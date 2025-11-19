@@ -1,67 +1,105 @@
 :root {
-    --color-fondo: #004766;
-    --color-texto: #ffffff;
-    --color-acento: #005C84;
-    --padding-lista: 10px;
-    --border-radius: 5px;
+  --color-fondo: #004766;
+  --color-texto: #ffffff;
+  --color-acento: #005c84;
+  --padding-lista: 10px;
+  --border-radius: 5px;
 }
 * {
-    list-style: none; /* Quita los bullets */
-    padding: 0;       /* Quita el padding por defecto */
-    margin: 0;        /* Quita el margen por defecto */
+  list-style: none; /* Quita los bullets */
+  padding: 0; /* Quita el padding por defecto */
+  margin: 0; /* Quita el margen por defecto */
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
-    background-color: var(--color-fondo); /* color de fondo de toda la página */
+  background-color: var(--color-fondo); /* color de fondo de toda la página */
+  display: flex;
+  flex-direction: column;
 }
 
 .nav {
-    display: flex;           /* Hace que los <li> se pongan en fila */
-    justify-content: space-between; /* Distribuye los elementos con espacio igual */
-    list-style: none;
-    padding: 0 1rem;
-    margin: 0;
-    background-color: var(--color-acento);
-    
+  display: flex; /* Hace que los <li> se pongan en fila */
+  justify-content: space-between; /* Distribuye los elementos con espacio igual */
+  list-style: none;
+  padding: 0 1rem;
+  margin: 0;
+  background-color: var(--color-acento);
+  min-height: 5vh;
+  box-shadow:inset 0 -3px 6px rgba(0, 0, 0, 0.5),0 2px 6px rgba(0, 0, 0, 0.4);
 }
-.nav a{
-    display: flex;             /* permite centrar el contenido */
-    align-items: center;       /* centra verticalmente */
-    justify-content: center;   /* centra horizontalmente */
-    height: 100%;              /* ocupa todo el alto del li */
-    color: inherit;
-    text-decoration: none;
+
+.nav a {
+  display: flex; /* permite centrar el contenido */
+  align-items: center; /* centra verticalmente */
+  justify-content: center; /* centra horizontalmente */
+  height: 100%; /* ocupa todo el alto del li */
+  color: inherit;
+  text-decoration: none;
 }
-ul{
-    padding: var(--padding-lista);
-    border-radius: var(--border-radius);
+
+ul {
+  padding: var(--padding-lista);
+  border-radius: var(--border-radius);
 }
-.lista{
-    border: 2px solid #000;
-    display: flex;
-    justify-content: center; /* centra horizontalmente los elementos */
-    align-items: center;     /* centra verticalmente los elementos dentro del li */
-    gap: 20px;               /* espacio entre elementos */
-    background-color: var(--color-acento);
-    padding: var(--padding-lista);
+
+.lista {
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center; /* centra horizontalmente los elementos */
+  align-items: center; /* centra verticalmente los elementos dentro del li */
+  gap: 20px; /* espacio entre elementos */
+  background-color: var(--color-acento);
+  padding: var(--padding-lista);
 }
-.referencia-lista{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    font-weight: bold;
+
+.lista_nav {
+  border: none;
+  display: flex;
+  justify-content: center; /* centra horizontalmente los elementos */
+  align-items: center; /* centra verticalmente los elementos dentro del li */
+  gap: 20px; /* espacio entre elementos */
+  background-color: var(--color-acento);
+  padding: var(--padding-lista);
 }
-.sub-bar{
-    display: flex;           /* Hace que los <li> se pongan en fila */
-    justify-content: space-around; /* Distribuye los elementos con espacio igual */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: var(--color-acento);
+
+.referencia-lista {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
 }
-.lista a, .lista h2, .lista h3, .lista p, .lista span {
-    flex: 1;       /* todas las columnas toman el mismo ancho */
-    text-align: center; /* centra el texto */
+
+.btn-navbar {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sub-bar.active {
+  display: flex; /* Hace que los <li> se pongan en fila */
+  justify-content: space-around; /* Distribuye los elementos con espacio igual */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-acento);
+}
+
+.sub-bar {
+  display: none;
+}
+
+.lista a,
+.lista h2,
+.lista h3,
+.lista p,
+.lista span {
+  flex: 1; /* todas las columnas toman el mismo ancho */
+  text-align: center; /* centra el texto */
 }
 
 a,
@@ -70,4 +108,56 @@ a:hover,
 a:active {
   color: inherit;
   text-decoration: none;
+}
+
+/*parte de el login/register*/
+.logReg_segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+.logReg_segment2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main{
+    min-height: 90vh;
+}
+/* parte de el panel de gestion*/
+.panel_main{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.nav_panel{
+    display: flex;
+}
+.ul_panel{
+    display: flex;
+}
+.ul_panel > li{
+    padding: 20px;
+}
+.panel_main > h1{
+    padding: 10px;
+}
+
+/* footer */
+.footer{
+    min-height: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--color-acento);
 }

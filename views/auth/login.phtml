@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <title>login</title>
     <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+    <script src="assets/js/category_button.js"></script>
 </head>
 <body>
      <?php
     require_once __DIR__ . '/../partials/nav_bar.phtml';
     ?>
+    <section class= 'sub-bar' id= 'menu-category'>
+        
+    <?php foreach ($categories as $s): ?>
+            <h3 class="lista"><a href="?action=vehiculos/category/<?= $s['id'] ?>"><?= $s['name'] ?></a></h3>
+        <?php endforeach; ?>
+
+
+    </section>
+
+    <div class='logReg_segment'>
+
+    <div class='logReg_segment2'>
     <h1>Login</h1>
-    <?php if(!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
-    <form action="?action=login" method="POST">
-        <label>Email: <input type="email" name="email" required></label><br>
-        <label>Contraseña: <input type="password" name="password" required></label><br>
-        <button type="submit">Ingresar</button>
-    </form>
+        <?php if(!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
+        <form action="?action=login" method="POST" class= 'form'>
+            <label>Email: <input type="email" name="email" required></label><br>
+            <label>Contraseña: <input type="password" name="password" required></label><br>
+            <button type="submit">Ingresar</button>
+         </form>
     <a href="?action=register">dont have acount?</a>
+    </div>
+    </div>
+
+    <?php
+    require_once __DIR__ . '/../partials/footer.phtml';
+    ?>
+
 </body>
 </html>

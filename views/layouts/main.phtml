@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+    <script src="assets/js/category_button.js"></script>
+</head>
+<body>
+    
+     <?php
+     require_once __DIR__ . '/../partials/nav_bar_category.phtml';
+     ?>
+    <main>
+     <section class= 'sub-bar' id= 'menu-category'>
+        
+     <?php foreach ($categories as $s): ?>
+            <h3 class="lista_nav"><a href="?action=vehiculos/category/<?= $s['id'] ?>"><?= $s['name'] ?></a></h3>
+        <?php endforeach; ?>
+
+
+     </section>
+   
+     <ul>
+         <li class='lista referencia-lista'> <a class='referencia-lista'>titulo</a><a class='referencia-lista'>categoria</a><a class='referencia-lista'>descripcion</a><a class='referencia-lista'>anunciante</a></li>
+         <?php foreach ($vehicles as $u): ?>
+             <li class='lista'>
+                 <h2 class="TITULO"><?php echo $u['title']?></h2>
+                 <h3 class="CATEGORIA"><?php echo $u['category_name']?></h3>
+                 <p class="DESCRIPCION"><?php echo $u['description']?></p>
+                 <span class="ANUNCIANTE"><?php echo $u['name']?></span>
+             </li>
+         <?php endforeach; ?>
+     </ul>
+    </main>
+    <?php
+    require_once __DIR__ . '/../partials/footer.phtml';
+    ?>
+</body>
+</html>

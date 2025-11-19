@@ -15,7 +15,7 @@ class VehicleController {
             $vehicles = $vehicle->getVehicle();
         }
 
-        include __DIR__ . '/../../views/vehicle/index.phtml';
+        include __DIR__ . '/../../views/layouts/main.phtml';
     }
 
     public function manage(){

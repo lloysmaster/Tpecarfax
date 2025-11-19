@@ -9,20 +9,21 @@
     <?php
     require_once __DIR__ . '/../../partials/nav_bar.phtml';
     ?>
-        
+    <main class= 'panel_main'>    
     <h1>Panel de gestión de vehículos</h1>
 
-    <nav>
-        <ul>
-            <!-- Cualquier usuario logueado puede agregar -->
-            <li><a href="?action=vehiculos/create">Agregar nuevo vehículo</a></li>
-
-            <!-- Solo admins -->
-            <?php if (isAdmin()): ?>
+    <nav class= 'nav_panel'>
+        <ul class = 'ul_panel'>
+            
+                <li><a href="?action=vehiculos/create">Agregar nuevo vehículo</a></li>
                 <li><a href="?action=vehiculos/editList">Editar vehículos</a></li>
                 <li><a href="?action=vehiculos/deleteList">Eliminar vehículos</a></li>
-            <?php endif; ?>
+           
         </ul>
     </nav>
+    </main>
+    <?php
+    require_once __DIR__ . '/../../partials/footer.phtml';
+    ?>
 </body>
 </html>
