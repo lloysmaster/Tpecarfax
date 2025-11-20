@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar vehículo</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+
+<?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
+
+<main class="panel_main">
+
+    <h2>Confirmar eliminación</h2>
+
+    <p>¿Querés eliminar tu vehículo <strong><?= htmlspecialchars($vehicle['title']) ?></strong>?</p>
+
+    <form method="POST">
+        <button type="submit" class="btnDelete">Eliminar</button>
+        <a href="?action=panel/vehicle/list" class="btnCancel">Cancelar</a>
+    </form>
+
+</main>
+
+<?php require_once __DIR__ . '/../../../partials/footer.phtml'; ?>
+
+</body>
+</html>

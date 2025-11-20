@@ -19,7 +19,7 @@ function requireLogin() {
 function requireAdmin($redirect = true) {
         if (!isLoggedIn() || !isAdmin()) {
         if ($redirect) {
-            header("Location: ?action=vehiculos");
+            header("Location: ?action=vehicle");
             exit;
         }
         return false;

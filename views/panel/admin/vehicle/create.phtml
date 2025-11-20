@@ -7,36 +7,45 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="?action=vehiculos">Inicio</a></li>
-            <li><a href="?action=categorias">Categorías</a></li>
-            <li><a href="?action=logout">Cerrar sesión (<?= htmlspecialchars($_SESSION['user']['name']) ?>)</a></li>
-        </ul>
-    </nav>
+    <?php
+    require_once __DIR__ . '/../../../partials/nav_bar.phtml';
+    ?>
 
-    <main class="contenedor">
+    <main class="panel_main">
         <h1>Publicar un nuevo vehículo</h1>
 
-        <form action="?action=vehicle/create" method="POST" class="formulario">
-            <label for="name">Nombre del vehículo:</label>
-            <input type="text" id="name" name="name" required>
+        <form action="?action=panel/vehicle/create" method="POST">
 
-            <label for="price">Precio:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
+    <label>Título:</label>
+    <input type="text" name="title" required>
 
-            <label for="category_id">Categoría:</label>
-            <select id="category_id" name="category_id" required>
-                <option value="">Seleccionar...</option>
-                <?php foreach ($categories as $c): ?>
-                    <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></option>
-                <?php endforeach; ?>
-            </select>
+    <label>Descripción:</label>
+    <textarea name="description" required></textarea>
 
-            <button type="submit" class="boton boton-publicar">Publicar</button>
-        </form>
+    <label>Marca:</label>
+    <input type="text" name="brand" required>
 
-        <p><a href="?action=vehiculos">← Volver al listado</a></p>
+    <label>Modelo:</label>
+    <input type="text" name="model" required>
+
+    <label>Año:</label>
+    <input type="number" name="year" required>
+
+    <label>Precio:</label>
+    <input type="number" step="0.01" name="price" required>
+
+    <label>Categoría:</label>
+    <select name="category_id" required>
+        <option value="">Seleccione...</option>
+        <?php foreach ($categories as $c): ?>
+            <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit">Publicar</button>
+</form>
+
+        <p><a href="?action=vehicle">← Volver al listado</a></p>
     </main>
         <?php
     require_once __DIR__ . '/../../../partials/footer.phtml';

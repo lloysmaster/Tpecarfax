@@ -6,13 +6,13 @@ require_once './app/controllers/vehicle.controller.php';
 require_once './app/controllers/category.controller.php';
 require_once './app/controllers/auth.controller.php';
 
-$action = $_GET['action'] ?? 'vehiculos';
+$action = $_GET['action'] ?? 'vehicle';
 $params = explode('/', $action);
 
 $controllerName = array_shift($params); 
 
 switch ($controllerName) {
-    case 'vehiculos':
+    case 'vehicle':
         $controller = new vehicleController();
 
         if (isset($params[0]) && $params[0] === 'category' && isset($params[1])) {
@@ -22,22 +22,22 @@ switch ($controllerName) {
         }
         break;
 
-    case 'categorias':
+    case 'category':
         $controller = new categoryController();
         $controller->index();
         break;
 
 
     case 'panel':
-    $section = $params[0] ?? 'vehiculos'; // o 'categorias'
+    $section = $params[0] ?? 'vehicle'; // o 'categorias'
     $subAction = $params[1] ?? 'manage';
     $id = $params[2] ?? null;
 
     switch ($section) {
-        case 'categorias':
+        case 'category':
             $controller = new CategoryController();
             break;
-        case 'vehiculos':
+        case 'vehicle':
             $controller = new VehicleController();
             break;
         default:
@@ -46,16 +46,17 @@ switch ($controllerName) {
         }
 
     switch ($subAction) {
+        case 'list':
+            $controller->list();
+            break;
         case 'create':
             $controller->create();
             break;
         case 'edit':
-            if ($id) $controller->edit($id);
-            else echo "Falta el ID para editar.";
+            $controller->edit();
             break;
         case 'delete':
-            if ($id) $controller->delete($id);
-            else echo "Falta el ID para eliminar.";
+            $controller->delete();
             break;
         case 'manage':
         default:

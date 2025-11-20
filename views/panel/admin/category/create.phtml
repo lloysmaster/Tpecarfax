@@ -7,13 +7,9 @@
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><a href="?action=vehiculos">Inicio</a></li>
-            <li><a href="?action=categorias">Categorías</a></li>
-            <li><a href="?action=logout">Cerrar sesión (<?= htmlspecialchars($_SESSION['user']['name']) ?>)</a></li>
-        </ul>
-    </nav>
+    <?php
+    require_once __DIR__ . '/../../../partials/nav_bar.phtml';
+    ?>
 
     <main class="contenedor">
         <h1>Publicar un nuevo vehículo</h1>

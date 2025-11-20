@@ -13,7 +13,7 @@ class AuthController {
             if ($user) {
                 session_start();
                 $_SESSION['user'] = $user;
-                header("Location: ?action=vehiculos");
+                header("Location: ?action=vehicle");
                 exit;
             } else {
                 $error = "Email o contraseña incorrecta";
@@ -42,7 +42,7 @@ class AuthController {
     public function logout() {
         session_start();
         session_destroy();
-        header("Location: ?action=vehiculos");
+        header("Location: ?action=vehicle");
         exit;
     }
     

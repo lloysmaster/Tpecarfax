@@ -15,12 +15,24 @@
     <nav class= 'nav_panel'>
         <ul class = 'ul_panel'>
             
-                <li><a href="?action=vehiculos/create">Agregar nuevo vehículo</a></li>
-                <li><a href="?action=vehiculos/editList">Editar vehículos</a></li>
-                <li><a href="?action=vehiculos/deleteList">Eliminar vehículos</a></li>
+                <li><a href="?action=panel/vehicle/create">Agregar nuevo vehículo</a></li>
+                <li><a href="?action=panel/vehicle/list">Editar/eliminar vehículos</a></li>
            
         </ul>
     </nav>
+    <div class='div_panel'>
+    <h1>Administrar categorias</h1>
+    <nav class= 'nav_panel'>
+        <ul class = 'ul_panel'>
+            
+                <li><a href="?action=panel/category/create">Agregar nueva categoría</a></li>
+                <li><a href="?action=panel/category/edit">Editar categorías</a></li>
+                <li><a href="?action=panel/category/delete">Eliminar categorías</a></li>
+
+           
+        </ul>
+    </nav>
+    </div>
     </main>
     <?php
     require_once __DIR__ . '/../../partials/footer.phtml';

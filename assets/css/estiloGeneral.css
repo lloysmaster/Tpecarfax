@@ -151,6 +151,14 @@ align-items: center;
 .panel_main > h1{
     padding: 10px;
 }
+.ul_panel > li{
+    padding: 20px;
+}
+.div_panel{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
 /* footer */
 .footer{

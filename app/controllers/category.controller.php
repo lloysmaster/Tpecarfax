@@ -6,7 +6,7 @@ class CategoryController {
         $category = new Category();
         $categories = $category->getAllCategory();
         
-        include __DIR__ . '/../../views/vehicle/index.phtml';
+        include __DIR__ . '/../../views/layouts/main.phtml';
     }
 
     public function manage() {
@@ -18,14 +18,35 @@ class CategoryController {
         include __DIR__ . '/../../views/vehicle/user/manage.phtml';
     }
     }
+
+
     public function create() {
-
+        if(isAdmin()){
+        include __DIR__ . '/../../views/panel/admin/category/create.phtml';
+    }else{
+        header("Location: ?action=vehicle");
+        exit;
     }
+    }
+
+
     public function edit() {
-
+         if(isAdmin()){
+        include __DIR__ . '/../../views/panel/admin/category/edit.phtml';
+        }else{
+        header("Location: ?action=vehicle");
+        exit;
     }
-    public function delete() {
+    }
 
+
+    public function delete() {
+         if(isAdmin()){
+        include __DIR__ . '/../../views/panel/admin/category/delete.phtml';
+        }else{
+        header("Location: ?action=vehicle");
+        exit;
+    }
     }
     
 }
