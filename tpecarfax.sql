@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2025 a las 22:19:47
+-- Tiempo de generación: 21-11-2025 a las 18:56:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -53,18 +53,16 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT 0
+  `role` enum('admin','user') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `is_admin`) VALUES
-(1, 'eltutangamon', 'eltutangamon@pijacorta.com', '1111111', 0),
-(2, 'elmaspitudo', 'elmaspitudo@quizalocontrario.com', '11111111111', 0),
-(3, 'tremendisimoputo', 'tremendisimoputo@nohetero.com', '1111111111111', 0),
-(4, 'facundo', 'pelotudo@pito.com', '$2y$10$ESyC1ERw3vOGlz2tu2lk8.V.Lkv9xAkWG6v11/0WSjXEZsIAuvGMy', 0);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
+(6, 'admin', 'admin@istrador.com', '$2y$10$kzsT2XWm.1SFN/q93F3.quDeK3tCbfQqGpniPfWsaloVB60CwOYcC', 'admin'),
+(7, 'user', 'user@usuario.com', '$2y$10$jlaBLpPgVFIr2P7teRZLIe/Bg/JqXyNg1bpm1HIkyToudgUNWAtY6', 'user');
 
 -- --------------------------------------------------------
 
@@ -89,9 +87,8 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id_vehicle`, `title`, `description`, `brand`, `model`, `year`, `price`, `id_category`, `id_user`) VALUES
-(2, 'vendo o permuto', 'esta en relativamente buen estado', 'ford', 't', '1945', 1000000.00, 2, 1),
-(3, 'pelotudo el que lo lee', 'es un buen auto', 'renault', '12', '1999', 99999999.99, 2, 2),
-(4, 'vendo urgente', 'nesesito plata', 'ferrari', 'la ferrari', '1997', 10000000.00, 2, 3);
+(8, 'auto', 'y pues un auto normal', 'fiat', 'uno', '1983', 10000000.00, 2, 7),
+(9, 'la fiera', 'una motito', 'zanella', 'rx150', '2025', 1980000.00, 1, 6);
 
 --
 -- Índices para tablas volcadas
@@ -126,19 +123,19 @@ ALTER TABLE `vehicles`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `id_vehicle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_vehicle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
