@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Categorías</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+
+<body>
+<?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
+
+<main class="panel_main">
+    <h1>Listado de categorías</h1>
+
+    <?php if (empty($categories)): ?>
+        <p>No hay categorías para mostrar.</p>
+    <?php else: ?>
+
+        <table border="1" class="tabla_admin">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($categories as $c): ?>
+                    <tr>
+                        <td><?= $c['id'] ?></td>
+                        <td><?= htmlspecialchars($c['name']) ?></td>
+                        <td><?= htmlspecialchars($c['description']) ?></td>
+
+                        <td>
+                            <a href="?action=panel/category/edit&id=<?= $c['id'] ?>">Editar</a> |
+                            <a href="?action=panel/category/delete&id=<?= $c['id'] ?>"
+                               onclick="return confirm('¿Seguro que querés eliminar esta categoría?');">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+    <?php endif; ?>
+</main>
+
+<?php require_once __DIR__ . '/../../../partials/footer.phtml'; ?>
+</body>
+</html>

@@ -33,7 +33,7 @@ class AuthController {
             header("Location: ?action=login");
             exit;
         } else {
-            $error = "No se pudo registrar el usuario. Verifica los datos.";
+            $error = "No se pudo registrar el usuario, Verifica los datos.";
         }
     }
 

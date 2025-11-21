@@ -36,9 +36,9 @@ class VehicleController {
          $model = new Vehicle();
 
     if (isAdmin()) {
-        $vehicles = $model->getVehicle(); // trae todos
+        $vehicles = $model->getVehicle();
     } else {
-        $vehicles = $model->getVehicleByUser($_SESSION['user']['id']); // trae solo los del usuario
+        $vehicles = $model->getVehicleByUser($_SESSION['user']['id']);
     }
 
     include __DIR__ . '/../../views/panel/admin/vehicle/list.phtml';
@@ -111,7 +111,7 @@ class VehicleController {
 
     $vehicleModel = new Vehicle();
 
-    // Si enviaron el formulario → ACTUALIZAR
+ 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $title = $_POST['title'];
@@ -137,7 +137,7 @@ class VehicleController {
         exit;
     }
 
-    // Si es GET → cargar vehículo y categorías
+
     $vehicle = $vehicleModel->getVehicleById($vehicle_id);
 
     if (!$vehicle) {
@@ -173,13 +173,13 @@ class VehicleController {
     $currentUserId = $_SESSION['user']['id'];
     $isAdmin = isAdmin();
 
-    // --- REGLA DE PERMISOS ---
+
     if (!$isAdmin && $vehicle['id_user'] != $currentUserId) {
         echo "No tenés permiso para eliminar este vehículo.";
         exit;
     }
 
-    // --- POST → eliminar ---
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $vehicleModel->deleteVehicle($vehicle_id);
@@ -188,7 +188,7 @@ class VehicleController {
         exit;
     }
 
-    // --- GET → mostrar vista de confirmación ---
+
     if ($isAdmin) {
         include __DIR__ . '/../../views/panel/admin/vehicle/delete.phtml';
     } else {

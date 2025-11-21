@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Categoría</title>
+    <title>Eliminar Categoría</title>
     <link rel="stylesheet" href="assets/css/estiloGeneral.css">
 </head>
 
@@ -10,16 +10,13 @@
 <?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
 
 <main class="panel_main">
-    <h1>Agregar nueva categoría</h1>
+    <h1>Eliminar categoría</h1>
+
+    <p>¿Seguro que querés eliminar la categoría "<strong><?= htmlspecialchars($category['name']) ?></strong>"?</p>
 
     <form method="POST">
-        <label>Nombre:</label>
-        <input type="text" name="name" required>
-
-        <label>Descripción:</label>
-        <textarea name="description" required></textarea>
-
-        <button type="submit">Crear categoría</button>
+        <button type="submit">Sí, eliminar</button>
+        <a href="?action=panel/category/list">Cancelar</a>
     </form>
 </main>
 

@@ -18,13 +18,13 @@ class User {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            return $user; // login correcto
+            return $user;
         }
-        return false; // login fallido
+        return false; 
     }
 
     public function register($name, $email, $password, $role = 'user') {
-    // Encriptamos la contraseña
+    // Encriptacion
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     $query = "INSERT INTO users (name, email, password, role) 

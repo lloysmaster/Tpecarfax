@@ -2,20 +2,28 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>editar publicacion</title>
+    <title>Editar Categoría</title>
     <link rel="stylesheet" href="assets/css/estiloGeneral.css">
 </head>
-<body>
-    
-    <?php
-    require_once __DIR__ . '/../../../partials/nav_bar.phtml';
-    ?>
-    
-        
-    
 
-    <?php
-    require_once __DIR__ . '/../../../partials/footer.phtml';
-    ?>
+<body>
+<?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
+
+<main class="panel_main">
+    <h1>Editar categoría</h1>
+
+    <form method="POST">
+
+        <label>Nombre:</label>
+        <input type="text" name="name" value="<?= htmlspecialchars($category['name']) ?>" required>
+
+        <label>Descripción:</label>
+        <textarea name="description" required><?= htmlspecialchars($category['description']) ?></textarea>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+</main>
+
+<?php require_once __DIR__ . '/../../../partials/footer.phtml'; ?>
 </body>
 </html>
