@@ -1,0 +1,15 @@
+Abrir phpMyAdmin o cualquier cliente MySQL.
+
+Crear una base de datos nueva con el nombre:
+
+                            tpecarfax
+
+
+⚠️ Debe coincidir exactamente con el nombre que figura en Database.php.
+
+Importar el archivo incluido en el proyecto:
+
+/database/tpecarfax.sql
+
+
+Verificar que las tablas se hayan importado correctamente.

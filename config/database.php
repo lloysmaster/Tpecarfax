@@ -1,7 +1,7 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "testbasecarfax";
+    private $db_name = "tpecarfax";
     private $username = "root";
     private $password = "";
     public $conn;
