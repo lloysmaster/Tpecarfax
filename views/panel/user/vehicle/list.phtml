@@ -40,6 +40,10 @@
                 <td><?= htmlspecialchars($v['category_name'] ?? $v['category']) ?></td>
 
                 <td>
+                    <a href="?action=panel/vehicle/edit&id=<?= $v['id_vehicle'] ?>">
+                        Editar
+                    </a>
+                    |
                     <a href="?action=panel/vehicle/delete&id=<?= $v['id_vehicle'] ?>"
                        onclick="return confirm('¿Seguro que querés eliminar este vehículo?');">
                        Eliminar

@@ -94,16 +94,9 @@ class VehicleController {
 }
 
 
-
-    public function edit() {
+public function edit() {
     requireLogin();
 
-    if (!isAdmin()) {
-        header("Location: ?action=vehicle");
-        exit;
-    }
-
-    
     $vehicle_id = $_GET['id'] ?? null;
 
     if (!$vehicle_id) {
@@ -112,8 +105,23 @@ class VehicleController {
     }
 
     $vehicleModel = new Vehicle();
+    $vehicle = $vehicleModel->getVehicleById($vehicle_id);
 
- 
+    if (!$vehicle) {
+        echo "Vehículo no encontrado";
+        exit;
+    }
+
+    $currentUserId = $_SESSION['user']['id'];
+    $isAdmin = isAdmin();
+
+    
+    if (!$isAdmin && $vehicle['id_user'] != $currentUserId) {
+        echo "No tenés permiso para editar este vehículo.";
+        exit;
+    }
+
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $title = $_POST['title'];
@@ -135,23 +143,22 @@ class VehicleController {
             $category_id
         );
 
-        header("Location: ?action=vehicle");
+        header("Location: ?action=panel/vehicle/list&status=updated");
         exit;
     }
 
-
-    $vehicle = $vehicleModel->getVehicleById($vehicle_id);
-
-    if (!$vehicle) {
-        echo "Vehículo no encontrado";
-        exit;
-    }
-
+    
     $category = new Category();
     $categories = $category->getAllCategory();
 
-    include __DIR__ . '/../../views/panel/admin/vehicle/edit.phtml';
+   
+    if ($isAdmin) {
+        include __DIR__ . '/../../views/panel/admin/vehicle/edit.phtml';
+    } else {
+        include __DIR__ . '/../../views/panel/user/vehicle/edit.phtml';
+    }
 }
+
 
     
     public function delete() {
