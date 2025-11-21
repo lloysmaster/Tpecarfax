@@ -169,3 +169,9 @@ align-items: center;
     width: 100%;
     background-color: var(--color-acento);
 }
+
+.vehicle_detail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

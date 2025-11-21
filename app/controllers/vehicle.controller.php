@@ -37,11 +37,13 @@ class VehicleController {
 
     if (isAdmin()) {
         $vehicles = $model->getVehicle();
+        include __DIR__ . '/../../views/panel/admin/vehicle/list.phtml';
     } else {
         $vehicles = $model->getVehicleByUser($_SESSION['user']['id']);
+        include __DIR__ . '/../../views/panel/user/vehicle/list.phtml';
     }
 
-    include __DIR__ . '/../../views/panel/admin/vehicle/list.phtml';
+    
     }
 
 
@@ -196,6 +198,17 @@ class VehicleController {
     }
 }
 
+public function view($id) {
+    $vehicleModel = new Vehicle();
+    $vehicle = $vehicleModel->getVehicleById($id);
+
+    if (!$vehicle) {
+        echo "Vehículo no encontrado.";
+        exit;
+    }
+
+    include __DIR__ . '/../../views/layouts/view.phtml';
+}
 
 
     

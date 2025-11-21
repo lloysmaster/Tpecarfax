@@ -7,48 +7,46 @@
 </head>
 <body>
 
-    <?php
-    require_once __DIR__ . '/../../../partials/nav_bar.phtml';
-    ?>
+    <?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
 
     <main class="panel_main">
         <h1>Publicar un nuevo vehículo</h1>
 
         <form action="?action=panel/vehicle/create" method="POST">
 
-    <label>Título:</label>
-    <input type="text" name="title" required>
+            <label>Título:</label>
+            <input type="text" name="title" required>
 
-    <label>Descripción:</label>
-    <textarea name="description" required></textarea>
+            <label>Descripción:</label>
+            <textarea name="description" required></textarea>
 
-    <label>Marca:</label>
-    <input type="text" name="brand" required>
+            <label>Marca:</label>
+            <input type="text" name="brand" required>
 
-    <label>Modelo:</label>
-    <input type="text" name="model" required>
+            <label>Modelo:</label>
+            <input type="text" name="model" required>
 
-    <label>Año:</label>
-    <input type="number" name="year" required>
+            <label>Año:</label>
+            <input type="number" name="year" required>
 
-    <label>Precio:</label>
-    <input type="number" step="0.01" name="price" required>
+            <label>Precio:</label>
+            <input type="number" step="0.01" name="price" required>
 
-    <label>Categoría:</label>
-    <select name="category_id" required>
-        <option value="">Seleccione...</option>
-        <?php foreach ($categories as $c): ?>
-            <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></option>
-        <?php endforeach; ?>
-    </select>
+            <label>Categoría:</label>
+            <select name="category_id" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($categories as $c): ?>
+                    <option value="<?= $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></option>
+                <?php endforeach; ?>
+            </select>
 
-    <button type="submit">Publicar</button>
-</form>
+            <button type="submit">Publicar</button>
+        </form>
 
         <p><a href="?action=vehicle">← Volver al listado</a></p>
     </main>
-        <?php
-    require_once __DIR__ . '/../../../partials/footer.phtml';
-    ?>
+
+    <?php require_once __DIR__ . '/../../../partials/footer.phtml'; ?>
+
 </body>
 </html>

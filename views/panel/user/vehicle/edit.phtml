@@ -7,15 +7,54 @@
 </head>
 <body>
     
-     <?php
-    require_once __DIR__ . '/../partials/nav_bar.phtml';
+    <?php
+    require_once __DIR__ . '/../../../partials/nav_bar.phtml';
     ?>
-    
+    <main class='panel_main'>
+    <h1>Editar vehículo</h1>
+
+<form action="?action=panel/vehicle/edit&id=<?= $vehicle['id_vehicle'] ?>" method="POST">
+
+    <label>Título:</label>
+    <input type="text" name="title" value="<?= htmlspecialchars($vehicle['title']) ?>" required>
+
+    <label>Descripción:</label>
+    <textarea name="description" required><?= htmlspecialchars($vehicle['description']) ?></textarea>
+
+    <label>Marca:</label>
+    <input type="text" name="brand" value="<?= htmlspecialchars($vehicle['brand']) ?>" required>
+
+    <label>Modelo:</label>
+    <input type="text" name="model" value="<?= htmlspecialchars($vehicle['model']) ?>" required>
+
+    <label>Año:</label>
+    <input type="number" name="year" value="<?= $vehicle['year'] ?>" required>
+
+    <label>Precio:</label>
+    <input type="number" step="0.01" name="price" value="<?= $vehicle['price'] ?>" required>
+
+    <label>Categoría:</label>
+    <select name="category_id" required>
+        <?php foreach ($categories as $c): ?>
+            <option
+                value="<?= $c['id'] ?>"
+                <?= $c['id'] == $vehicle['id_category'] ? 'selected' : '' ?>
+            >
+                <?= htmlspecialchars($c['name']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit">Actualizar</button>
+</form>
+
+<p><a href="?action=vehicle">← Volver</a></p>
+</main>
         
     
 
     <?php
-    require_once __DIR__ . '/../../partials/footer.phtml';
+    require_once __DIR__ . '/../../../partials/footer.phtml';
     ?>
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($vehicle['title']) ?></title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+
+<?php require_once __DIR__ . '/../partials/nav_bar_category.phtml'; ?>
+
+<main class="vehicle_detail">
+
+    <h1><?= htmlspecialchars($vehicle['title']) ?></h1>
+
+    <h3>Categoría: <?= htmlspecialchars($vehicle['category_name']) ?></h3>
+
+    <p><strong>Descripción:</strong></p>
+    <p><?= nl2br(htmlspecialchars($vehicle['description'])) ?></p>
+
+    <p><strong>marca:</strong></p>
+    <p><?= nl2br(htmlspecialchars($vehicle['brand'])) ?></p>
+
+    <p><strong>Modelo:</strong></p>
+    <p><?= nl2br(htmlspecialchars($vehicle['model'])) ?></p>
+
+    <p><strong>Publicado por:</strong> <?= htmlspecialchars($vehicle['user_name']) ?></p>
+
+    <?php if (!empty($vehicle['price'])): ?>
+        <p><strong>Precio:</strong> $<?= htmlspecialchars($vehicle['price']) ?></p>
+    <?php endif; ?>
+
+    <?php if (!empty($vehicle['image'])): ?>
+        <div class="vehicle-image">
+            <img src="uploads/vehicles/<?= htmlspecialchars($vehicle['image']) ?>" alt="Imagen del vehículo">
+        </div>
+    <?php endif; ?>
+
+    <a href="javascript:history.back()">← Volver</a>
+
+</main>
+
+<?php require_once __DIR__ . '/../partials/footer.phtml'; ?>
+</body>
+</html>

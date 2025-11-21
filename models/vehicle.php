@@ -64,7 +64,17 @@ public function createVehicle($title, $description, $brand, $model, $year, $pric
 }
 
 public function getVehicleById($id) {
-    $query = "SELECT * FROM vehicles WHERE id_vehicle = :id LIMIT 1";
+
+    $query = "SELECT 
+                v.*,
+                u.name AS user_name,
+                c.name AS category_name
+              FROM vehicles v
+              JOIN users u ON v.id_user = u.id
+              JOIN category c ON v.id_category = c.id
+              WHERE v.id_vehicle = :id
+              LIMIT 1";
+
     $stmt = $this->conn->prepare($query);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();

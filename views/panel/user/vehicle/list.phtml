@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis vehículos</title>
+    <link rel="stylesheet" href="assets/css/estiloGeneral.css">
+</head>
+<body>
+
+<?php require_once __DIR__ . '/../../../partials/nav_bar.phtml'; ?>
+
+<main class="panel_main">
+    <h1>Mis vehículos publicados</h1>
+
+    <?php if (empty($vehicles)): ?>
+        <p>No tenés vehículos publicados.</p>
+    <?php else: ?>
+
+    <table border="1" class="tabla_admin">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach ($vehicles as $v): ?>
+            <tr>
+                <td><?= htmlspecialchars($v['title']) ?></td>
+                <td><?= htmlspecialchars($v['brand']) ?></td>
+                <td><?= htmlspecialchars($v['model']) ?></td>
+                <td><?= htmlspecialchars($v['year']) ?></td>
+                <td><?= htmlspecialchars($v['price']) ?></td>
+                <td><?= htmlspecialchars($v['category_name'] ?? $v['category']) ?></td>
+
+                <td>
+                    <a href="?action=panel/vehicle/delete&id=<?= $v['id_vehicle'] ?>"
+                       onclick="return confirm('¿Seguro que querés eliminar este vehículo?');">
+                       Eliminar
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php endif; ?>
+
+</main>
+
+<?php require_once __DIR__ . '/../../../partials/footer.phtml'; ?>
+
+</body>
+</html>

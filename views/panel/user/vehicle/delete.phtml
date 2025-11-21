@@ -13,10 +13,12 @@
 
     <h2>Confirmar eliminación</h2>
 
-    <p>¿Querés eliminar tu vehículo <strong><?= htmlspecialchars($vehicle['title']) ?></strong>?</p>
+    <p>¿Estás seguro que querés eliminar tu vehículo  
+        <strong><?= htmlspecialchars($vehicle['title']) ?></strong>?
+    </p>
 
     <form method="POST">
-        <button type="submit" class="btnDelete">Eliminar</button>
+        <button type="submit" class="btnDelete">Eliminar definitivamente</button>
         <a href="?action=panel/vehicle/list" class="btnCancel">Cancelar</a>
     </form>
 
